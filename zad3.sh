@@ -1,10 +1,7 @@
 !/bin/bash
-read -p "Podaj nazwę pliku: " nazwa_pliku
 
-if [ -f "$nazwa_pliku" ] && [ -x "$nazwa_pliku" ]; then
-    ./"$nazwa_pliku"
-    wynik=$?
-    echo "Program zakończony kodem wyjścia: $wynik"
-else
-    echo "Plik nie jest plikiem zwykłym lub nie ma praw do wykonywania!"
+if [ $# -eq 3 ]; then
+    if [ -f "$1" ] && [ -r "$1" ] && [ -f "$2" ] && [ -r "$2" ] && [ ! -e "$3" ]; then
+        cat "$1" "$2" > "$3"
+    fi
 fi
